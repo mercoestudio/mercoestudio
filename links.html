@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links Oficiais | Merco Estúdio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --brand-orange: #d32c17;
+      --brand-orange-soft: rgba(211, 44, 23, 0.05);
+      --text-main: #060400;
+      --text-muted: rgba(6, 4, 0, 0.7);
+      --bg-light: #FDFDFD;
+      --border: #EAECF0;
+      --radius: 8px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      /* Background Premium: Mesh Gradient + Dot Grid */
+      background-image:
+        radial-gradient(circle at 100% 0%, rgba(211, 44, 23, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(211, 44, 23, 0.03) 0%, transparent 35%),
+        radial-gradient(#e5e7eb 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 32px 32px;
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      animation: slideUp 0.6s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Cabeçalho */
+    .brand-header {
+      margin-bottom: 40px;
+    }
+
+    .initials-logo {
+      width: 64px;
+      height: 64px;
+      background: white;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.015);
+      border-radius: 8px;
+    }
+
+    .initials-logo img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+
+    .initials-logo span {
+      color: var(--brand-orange);
+    }
+
+    .brand-header h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 42px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .brand-header p {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* Divisória Premium */
+    .divider {
+      width: 40px;
+      height: 3px;
+      background-color: var(--brand-orange);
+      margin: 32px auto;
+      border-radius: 2px;
+    }
+
+    /* Stack de Links */
+    .links-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link-item {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      padding: 18px 24px;
+      border-radius: var(--radius);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+      box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+    }
+
+    .link-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--brand-orange);
+      background: white;
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .link-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .link-item i,
+    .link-item svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .link-item:hover i,
+    .link-item:hover svg {
+      color: var(--brand-orange);
+    }
+
+    .link-title {
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    /* CTA Especial (Solicitar Projeto) */
+    .link-item.featured {
+      background: var(--brand-orange);
+      border-color: var(--brand-orange);
+      color: white;
+      box-shadow: 0 4px 12px rgba(211, 44, 23, 0.15);
+    }
+
+    .link-item.featured i,
+    .link-item.featured svg {
+      color: white;
+      opacity: 0.9;
+    }
+
+    .link-item.featured:hover {
+      background: #b02413;
+      border-color: #b02413;
+      box-shadow: 0 8px 24px rgba(211, 44, 23, 0.25);
+    }
+
+    .link-item.featured:hover i {
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 48px;
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .dot::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      border: 2px solid #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(2.5);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 60px 20px;
+      }
+
+      .brand-header h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="brand-header">
+      <div class="initials-logo">
+        <img src="assets/icons/logo-linktree.svg" alt="">
+      </div>
+      <h1>Merco Estúdio</h1>
+      <p>Desenvolvimento sob medida com foco em performance e conversão.</p>
+
+      <div class="divider"></div>
+    </header>
+
+    <div class="links-stack">
+      <!-- 1. WhatsApp -->
+      <a href="https://wa.me/553484291886?text=Ol%C3%A1%21%20Quero%20conversar%20com%20um%20consultor%20da%20Merco%20Est%C3%BAdio%20sobre%20um%20projeto" target="_blank" class="link-item">
+        <div class="link-content">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .004 5.412 0 12.049c0 2.123.554 4.197 1.606 6.037L0 24l6.105-1.602a11.834 11.834 0 005.943 1.603h.005c6.634 0 12.043-5.413 12.047-12.051a11.811 11.811 0 00-3.535-8.52" />
+          </svg>
+          <span class="link-title">Falar com Consultor</span>
+        </div>
+        <i data-lucide="chevron-right" style="width: 16px; opacity: 0.3;"></i>
+      </a>
+
+      <!-- 2. Solicitar Projeto (CTA Laranja) -->
+      <a href="orcamento.html" class="link-item featured">
+        <div class="link-content">
+          <i data-lucide="zap"></i>
+          <span class="link-title">Solicitar Projeto</span>
+        </div>
+        <i data-lucide="chevron-right" style="width: 16px;"></i>
+      </a>
+
+      <!-- 3. Site Oficial -->
+      <a href="index.html" class="link-item">
+        <div class="link-content">
+          <i data-lucide="globe"></i>
+          <span class="link-title">Conheça nosso Site</span>
+        </div>
+        <i data-lucide="external-link" style="width: 16px; opacity: 0.3;"></i>
+      </a>
+
+      <!-- 4. Instagram -->
+      <a href="https://www.instagram.com/mercoestudio/" target="_blank" class="link-item">
+        <div class="link-content">
+          <i data-lucide="instagram"></i>
+          <span class="link-title">Portifólio no Instagram</span>
+        </div>
+        <i data-lucide="external-link" style="width: 16px; opacity: 0.3;"></i>
+      </a>
+    </div>
+
+    <footer>
+      <div class="availability-badge">
+        <div class="dot"></div>
+        Agenda aberta para projetos
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
