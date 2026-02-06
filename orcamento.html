@@ -58,7 +58,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <style>
     :root {
@@ -726,7 +726,13 @@
       }
     });
 
-    lucide.createIcons();
+    const renderIcons = () => {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', renderIcons);
 
     nextBtn.addEventListener('click', () => {
       if (validateStep()) {
@@ -759,7 +765,7 @@
       nextBtn.innerText = current === total ? 'Finalizar e Enviar' : 'Continuar';
 
       wrapper.scrollTo({ top: 0, behavior: 'smooth' });
-      lucide.createIcons();
+      renderIcons();
     }
 
     function validateStep() {

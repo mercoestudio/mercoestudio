@@ -371,7 +371,11 @@
   </div>
 
   <script>
-    lucide.createIcons();
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
   </script>
 </body>
 
