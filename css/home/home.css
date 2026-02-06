@@ -1,0 +1,56 @@
+@import url(header.css);
+@import url(hero.css);
+@import url(servicos.css);
+@import url(diferenciais.css);
+@import url(cta.css);
+@import url(processo.css);
+@import url(precos.css);
+@import url(faq.css);
+@import url(footer.css);
+
+.content-border {
+  max-width: 1440px;
+  border-left: 1px solid rgba(6, 4, 0, 0.1);
+  border-right: 1px solid rgba(6, 4, 0, 0.1);
+  margin: 0 auto;
+  margin-top: -100px;
+  padding: 0px 24px;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.content {
+  width: 100%;
+  border-left: 1px solid rgba(6, 4, 0, 0.1);
+  border-right: 1px solid rgba(6, 4, 0, 0.1);
+}
+
+#inicio {
+  padding: 0px 0px;
+  overflow: hidden;
+}
+
+@media (max-width: 1540px) {
+  .content-border {
+    max-width: 1360px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .content-border {
+    max-width: 1200px;
+  }
+}
+@media (max-width: 1000px) {
+  .content-border {
+    border: none;
+    padding: 0px 0px;
+    margin: 0px;
+  }
+
+  .content {
+    border: none;
+    padding: 0px 0px;
+    margin: 0px;
+  }
+}

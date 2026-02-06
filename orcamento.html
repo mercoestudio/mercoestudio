@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qualificação de Projeto | Merco Software House</title>
+  <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --merco-red: #d32c17;
+      --merco-red-soft: rgba(211, 44, 23, 0.05);
+      --dark-sidebar: #0A0A0B;
+      --bg-main: #FFFFFF;
+      --text-main: #121212;
+      --text-muted: #667085;
+      --border: #EAECF0;
+      --radius: 8px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: #d32c17;
+      color: #ffffff;
+    }
+
+    ::-moz-selection {
+      background: #d32c17;
+      color: #ffffff;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .split-layout {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Lado Esquerdo (Visual) */
+    .visual-sidebar {
+      flex: 1.06;
+      background-color: var(--dark-sidebar);
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(211, 44, 23, 0.12) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M0 38.59V40h1.41l29.59-29.59L29.59 9 0 38.59zM0 1.41L1.41 0H0v1.41zM40 1.41L38.59 0H40v1.41zM1.41 40L40 1.41V0h-1.41L0 38.59V40h1.41zM40 38.59V40h-1.41L9 10.41 10.41 9 40 38.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 80px;
+      color: white;
+    }
+
+    .visual-sidebar .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .visual-sidebar .logo span {
+      color: var(--merco-red);
+    }
+
+    .visual-sidebar h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      max-width: 500px;
+    }
+
+    .visual-sidebar h1 em {
+      color: var(--merco-red);
+      font-style: italic;
+      font-family: 'Instrument Serif', serif;
+    }
+
+    /* Lado Direito (Formulário) */
+    .form-section {
+      flex: 1.3;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      height: 100%;
+    }
+
+    /* Cabeçalho Fixo Estilo ALS */
+
+    .logo-form {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .step-header {
+      padding: 32px 64px 20px 64px;
+      width: 100%;
+      background: white;
+      z-index: 5;
+      flex-shrink: 0;
+      max-width: 750px;
+      margin-top: 60px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+
+    }
+
+    .header-top .step-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      text-transform: uppercase;
+    }
+
+    .header-top .step-fraction {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .progress-line-container {
+      width: 100%;
+      height: 2px;
+      background: #F2F4F7;
+      position: relative;
+    }
+
+    .progress-line-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: var(--merco-red);
+      width: 20%;
+      transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    /* Conteúdo Central com Scroll */
+    .form-content-wrapper {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px 64px;
+      scrollbar-width: thin;
+      max-width: 600px;
+    }
+
+    .form-content-wrapper::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .form-content-wrapper::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 10px;
+    }
+
+    .form-content {
+      max-width: 580px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .question-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 42px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      font-weight: 500;
+    }
+
+    .question-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .step {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .field-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #344054;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #D0D5DD;
+      border-radius: var(--radius);
+      font-size: 16px;
+      background: white;
+      transition: var(--transition);
+      outline: none;
+      color: var(--text-main);
+      appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--merco-red);
+      box-shadow: 0 0 0 4px var(--merco-red-soft);
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .selectable-card {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .selectable-card input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .card-body {
+      padding: 16px;
+      border: 1px solid #D0D5DD;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+      transition: var(--transition);
+      background: white;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 52px;
+      color: var(--text-main);
+    }
+
+    .card-body i,
+    .card-body svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .selectable-card input:checked+.card-body {
+      border-color: var(--merco-red);
+      background: #fffafa;
+      color: var(--merco-red);
+    }
+
+    .selectable-card input:checked+.card-body i,
+    .selectable-card input:checked+.card-body svg {
+      color: var(--merco-red);
+    }
+
+    /* Rodapé Fixo */
+    .form-footer {
+      padding: 24px 64px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      border-top: 1px solid #F2F4F7;
+      background: white;
+      flex-shrink: 0;
+      z-index: 10;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      margin-top: 26px;
+    }
+
+    .btn-next {
+      background: var(--merco-red);
+      color: white;
+      min-width: 160px;
+    }
+
+    .btn-next:hover {
+      background: #b02413;
+      transform: translateY(-1px);
+    }
+
+    .btn-prev {
+      background: white;
+      color: var(--text-muted);
+      border: 1px solid #D0D5DD;
+    }
+
+    .btn-prev:hover {
+      background: #F9FAFB;
+    }
+
+    .field-alert {
+      position: fixed;
+      left: 50%;
+      top: 20px;
+      transform: translate(-50%, -16px);
+      background: var(--merco-red);
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 200;
+      font-size: 14px;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .field-alert.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    #success-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: white;
+      z-index: 100;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 40px 40px 40px;
+
+    }
+
+    @media (max-width: 900px) {
+      body {
+        overflow-y: auto;
+        height: auto;
+      }
+
+      .visual-sidebar h1 {
+        letter-spacing: 0;
+      }
+
+      .split-layout {
+        flex-direction: column;
+      }
+
+      .visual-sidebar {
+        padding: 40px 24px;
+        min-height: 230px;
+      }
+
+      .form-section {
+        height: auto;
+        min-height: 100%;
+        border-radius: 24px 24px 0 0;
+      }
+
+      .form-content-wrapper,
+      .step-header,
+      .form-footer {
+        padding: 0px 24px 32px 24px;
+      }
+
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .question-title {
+        font-size: 32px;
+      }
+
+      #success-overlay {
+        justify-content: flex-start;
+
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="split-layout">
+    <!-- Sidebar -->
+    <aside class="visual-sidebar">
+      <a href="index.html">
+        <img class="logo-form" src="assets/images/orcamento-logo.svg" alt="">
+      </a>
+      <h1>A estratégia certa para <em>escalar</em> seu negócio.</h1>
+
+    </aside>
+
+    <!-- Form Section -->
+    <main class="form-section">
+
+      <header class="step-header">
+
+        <div class="header-top">
+          <div id="step-label" class="step-label">Identificação</div>
+          <div id="step-fraction" class="step-fraction">1 / 5</div>
+        </div>
+        <div class="progress-line-container">
+          <div id="progress-fill" class="progress-line-fill"></div>
+        </div>
+      </header>
+
+      <div id="success-overlay">
+        <h2 class="question-title">Solicitação enviada!</h2>
+        <p>Aguarde nossa equipe analisar sua demanda e montar a melhor proposta possvel!</p>
+      </div>
+
+      <div class="form-content-wrapper">
+        <div class="form-content">
+          <form id="merco-form">
+
+            <!-- STEP 1 -->
+            <div class="step active" data-step="1" data-label="Identificação">
+              <h2 class="question-title">O que você busca?</h2>
+              <p class="question-desc">Inicie seu atendimento com os dados fundamentais.</p>
+
+              <div class="field-group">
+                <label>Seu nome completo *</label>
+                <input type="text" name="name" placeholder="Ex: João Silva" required>
+              </div>
+              <div class="field-group">
+                <label>E-mail profissional *</label>
+                <input type="email" name="email" placeholder="seu@email.com" required>
+              </div>
+              <div class="field-group">
+                <label>WhatsApp para contato *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step" data-step="2" data-label="Contexto de Uso">
+              <h2 class="question-title">Sobre o seu negócio.</h2>
+              <p class="question-desc">Conte-nos um pouco sobre a estrutura do projeto.</p>
+
+              <div class="field-group">
+                <label>Nome da empresa ou projeto *</label>
+                <input type="text" name="company" placeholder="Ex: Merco SaaS" required>
+              </div>
+
+              <div class="field-group">
+                <label>Tipo de negócio *</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="business_type" value="Empresa" checked>
+                    <div class="card-body"><i data-lucide="building-2"></i>Empresa</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="business_type" value="Startup">
+                    <div class="card-body"><i data-lucide="rocket"></i>Startup</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="business_type" value="Profissional autônomo">
+                    <div class="card-body"><i data-lucide="user-cog"></i>Profissional autônomo</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="business_type" value="Projeto pessoal">
+                    <div class="card-body"><i data-lucide="lightbulb"></i>Projeto pessoal</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Segmento de atuação (opcional)</label>
+                <input type="text" name="industry" placeholder="Ex: Varejo, Tecnologia, Saúde...">
+              </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="step" data-step="3" data-label="Classificação">
+              <h2 class="question-title">O que você precisa?</h2>
+              <p class="question-desc">Selecione uma ou mais categorias para o seu projeto.</p>
+
+              <div class="options-grid">
+                <label class="selectable-card">
+                  <input type="radio" name="services" value="Website Institucional">
+                  <div class="card-body"><i data-lucide="globe"></i>Website institucional</div>
+                </label>
+                <label class="selectable-card">
+                  <input type="radio" name="services" value="Landing Page">
+                  <div class="card-body"><i data-lucide="target"></i>Landing page</div>
+                </label>
+                <label class="selectable-card">
+                  <input type="radio" name="services" value="E-commerce (Shopify)">
+                  <div class="card-body"><i data-lucide="shopping-cart"></i>E-commerce (Shopify)</div>
+                </label>
+                <label class="selectable-card">
+                  <input type="radio" name="services" value="Sistema ou portal sob medida">
+                  <div class="card-body"><i data-lucide="cpu"></i>Sistema sob medida</div>
+                </label>
+                <label class="selectable-card">
+                  <input type="radio" name="services" value="Redesign / melhoria de site atual">
+                  <div class="card-body"><i data-lucide="palette"></i>Redesign / Melhoria</div>
+                </label>
+                <label class="selectable-card">
+                  <input type="radio" name="services" value="Outro" id="checkbox-other">
+                  <div class="card-body"><i data-lucide="plus"></i>Outro</div>
+                </label>
+              </div>
+
+              <div id="other-service-wrap" class="field-group" style="display: none; margin-top: 16px;">
+                <label>Descreva brevemente o que precisa</label>
+                <input type="text" name="other_service_desc" id="other-service-input" placeholder="Ex: App mobile, Consultoria de SEO...">
+              </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step" data-step="4" data-label="Planejamento">
+              <h2 class="question-title">Prazo e Investimento.</h2>
+              <p class="question-desc">Isso nos ajuda a alinhar expectativas reais.</p>
+
+              <div class="field-group">
+                <label>Investimento estimado</label>
+                <select name="budget">
+                  <option value="Até R$ 2.000">Até R$ 2.000</option>
+                  <option value="R$ 2.000 - R$ 3.500">R$ 2.000 - R$ 3.500</option>
+                  <option value="R$ 3.500 - R$ 5.000">R$ 3.500 - R$ 5.000</option>
+                  <option value="Acima de R$ 5.000">Acima de R$ 5.000</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label>Prazo desejado</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="deadline" value="Imediato (7 dias)" checked>
+                    <div class="card-body"><i data-lucide="zap"></i>Imediato (7 dias)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="deadline" value="Urgente (15 - 30 dias)">
+                    <div class="card-body"><i data-lucide="clock"></i>Urgente (15-30 dias)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="deadline" value="Médio Prazo (30 - 60 dias)">
+                    <div class="card-body"><i data-lucide="calendar"></i>Médio (30-60 dias)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="deadline" value="Planejamento Futuro">
+                    <div class="card-body"><i data-lucide="map"></i>Planejamento Futuro</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="step" data-step="5" data-label="Finalização">
+              <h2 class="question-title">Quase lá.</h2>
+              <p class="question-desc">Algum detalhe extra que não comentamos?</p>
+
+              <div class="field-group">
+                <label>Descrição breve (opcional)</label>
+                <textarea name="message" rows="3" placeholder="Fale um pouco sobre o objetivo central do projeto..."></textarea>
+              </div>
+
+              <div class="field-group" style="margin-top: 10px;">
+                <label class="selectable-card" style="width: 100%;">
+                  <input type="checkbox" name="terms" required>
+                  <div class="card-body" style="font-size: 13px; height: auto; padding: 12px; border-style: dashed;">
+                    <i data-lucide="check-circle-2"></i>
+                    Aceito o contato da Merco
+                  </div>
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <footer class="form-footer">
+        <button type="button" id="prev-btn" class="btn btn-prev" style="display: none;">Voltar</button>
+        <button type="button" id="next-btn" class="btn btn-next">Continuar</button>
+      </footer>
+    </main>
+  </div>
+
+  <div id="field-alert" class="field-alert" role="alert" aria-live="assertive"></div>
+
+  <script>
+    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1469323175438319751/AF7VL-ictOHIy8su1a9tY3DVLv6CHwixpipqzYlfYfhbLmtawCqCj8Ol8GL5fM_zqsiU";
+
+    let current = 1;
+    const total = 5;
+    const form = document.getElementById('merco-form');
+    const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const fill = document.getElementById('progress-fill');
+    const labelText = document.getElementById('step-label');
+    const fraction = document.getElementById('step-fraction');
+    const success = document.getElementById('success-overlay');
+    const wrapper = document.querySelector('.form-content-wrapper');
+    const alertBox = document.getElementById('field-alert');
+    let alertTimer = null;
+
+    const checkboxOther = document.getElementById('checkbox-other');
+    const otherWrap = document.getElementById('other-service-wrap');
+    const otherInput = document.getElementById('other-service-input');
+
+    checkboxOther.addEventListener('change', () => {
+      if (checkboxOther.checked) {
+        otherWrap.style.display = 'block';
+        otherInput.focus();
+      } else {
+        otherWrap.style.display = 'none';
+        otherInput.value = '';
+      }
+    });
+
+    lucide.createIcons();
+
+    nextBtn.addEventListener('click', () => {
+      if (validateStep()) {
+        if (current < total) {
+          current++;
+          update();
+        } else {
+          send();
+        }
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      current--;
+      update();
+    });
+
+    function update() {
+      const steps = document.querySelectorAll('.step');
+      steps.forEach(s => s.classList.remove('active'));
+
+      const activeStep = document.querySelector(`[data-step="${current}"]`);
+      activeStep.classList.add('active');
+
+      labelText.innerText = activeStep.dataset.label;
+      fraction.innerText = `${current} / ${total}`;
+      fill.style.width = `${(current / total) * 100}%`;
+
+      prevBtn.style.display = current === 1 ? 'none' : 'block';
+      nextBtn.innerText = current === total ? 'Finalizar e Enviar' : 'Continuar';
+
+      wrapper.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function validateStep() {
+      const active = document.querySelector('.step.active');
+      const required = active.querySelectorAll('[required]');
+      let valid = true;
+      let firstMissingLabel = '';
+      let firstMissingField = null;
+      required.forEach(i => {
+        if (!i.value || (i.type === 'checkbox' && !i.checked)) {
+          valid = false;
+          i.style.borderColor = 'var(--merco-red)';
+          if (!firstMissingField) {
+            firstMissingField = i;
+          }
+          if (!firstMissingLabel) {
+            const label = i.closest('.field-group')?.querySelector('label');
+            firstMissingLabel = label ? label.innerText.replace('*', '').trim() : 'um campo obrigatório';
+          }
+        } else {
+          i.style.borderColor = '#D0D5DD';
+        }
+      });
+
+      if (current === 3) {
+        const checked = active.querySelectorAll('input[name="services"]:checked');
+        if (checked.length === 0) {
+          valid = false;
+          firstMissingLabel = firstMissingLabel || 'selecione uma opção em "O que você precisa?"';
+          if (!firstMissingField) {
+            firstMissingField = active.querySelector('input[name="services"]');
+          }
+        }
+      }
+
+      if (!valid) {
+        showAlert(`Por favor, preencha ${firstMissingLabel}.`);
+        if (firstMissingField) {
+          firstMissingField.focus();
+        }
+      }
+
+      return valid;
+    }
+
+    function showAlert(message) {
+      if (!alertBox) return;
+      alertBox.textContent = message;
+      alertBox.classList.add('is-visible');
+      clearTimeout(alertTimer);
+      alertTimer = setTimeout(() => {
+        alertBox.classList.remove('is-visible');
+      }, 2800);
+    }
+
+    document.getElementById('phone').addEventListener('input', (e) => {
+      let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+      e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+
+    async function send() {
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+
+      let svcs = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+        .map(i => i.value);
+
+      if (svcs.includes('Outro')) {
+        svcs = svcs.filter(s => s !== 'Outro');
+        if (data.other_service_desc) {
+          svcs.push(`Outro (${data.other_service_desc})`);
+        } else {
+          svcs.push('Outro');
+        }
+      }
+
+      const payload = {
+        username: 'Merco Leads',
+        embeds: [
+          {
+            title: 'Novo formulário de qualificação',
+            color: 0xD32C17,
+            fields: [
+              { name: '👤 Nome', value: data.name || '-', inline: false },
+              { name: '✉️ E-mail', value: data.email || '-', inline: false },
+              { name: '📱 WhatsApp', value: data.phone || '-', inline: false },
+              { name: '🏢 Empresa', value: `${data.company || '-'} (${data.business_type || '-'})`, inline: false },
+              { name: '🏷️ Segmento', value: data.industry || 'Não informado', inline: false },
+              { name: '🛠️ O que precisa', value: svcs.join(', ') || '-', inline: false },
+              { name: '💰 Investimento', value: data.budget || '-', inline: false },
+              { name: '⏳ Prazo', value: data.deadline || '-', inline: false },
+              { name: '📝 Mensagem', value: data.message || 'Sem detalhes extras.', inline: false }
+            ],
+            timestamp: new Date().toISOString()
+          }
+        ]
+      };
+
+      success.innerHTML = `
+        <h2 class="question-title">Solicitação enviada!</h2>
+        <p>Agradecemos pela preferência. Em breve, entraremos em contato para entender melhor seu projeto.</p>
+      `;
+      success.style.display = 'flex';
+      try {
+        const res = await fetch(DISCORD_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error('Falha ao enviar para o Discord.');
+        }
+        form.reset();
+        current = 1;
+        update();
+      } catch (err) {
+        success.innerHTML = `
+          <h2 class="question-title">Não foi possível enviar.</h2>
+          <p>Verifique o webhook do Discord e tente novamente.</p>
+        `;
+      }
+    }
+  </script>
+</body>
+
+</html>

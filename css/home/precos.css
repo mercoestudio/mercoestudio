@@ -1,0 +1,233 @@
+.pricing {
+  padding: 120px 0px 100px 0px;
+  width: 100%;
+  border-bottom: 1px solid rgba(6, 4, 0, 0.1);
+}
+
+.pricing-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 24px;
+  text-align: center;
+}
+
+.pricing-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 151px;
+  height: 35px;
+  border-radius: 999px;
+  background: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(6, 4, 0, 0.8);
+  margin-bottom: 12px;
+  border: 1px solid rgba(6, 4, 0, 0.1);
+}
+
+.pricing-title {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 1.28;
+  color: #060400;
+  margin: 0px 0px 72px 0px;
+}
+
+.pricing-accent {
+  color: #d32c17;
+  font-family: 'Instrument Serif', serif;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+.pricing-card {
+  background: #e2e2e2;
+  padding: 12px 12px 40px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(6, 4, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pricing-card-top {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  border-radius: 14px;
+  border: 1px solid rgba(6, 4, 0, 0.1);
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card-top h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #060400;
+  margin: 0px 0px 10px 0px;
+}
+
+.pricing-card-top p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(6, 4, 0, 0.7);
+}
+
+.pricing-amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Instrument Serif', serif;
+  color: rgba(6, 4, 0, 0.8);
+}
+
+.pricing-amount span {
+  font-size: 18px;
+}
+
+.pricing-amount strong {
+  font-size: 28px;
+  font-weight: 500;
+  color: #060400;
+  font-family: 'Instrument Serif', serif;
+  position: relative;
+  top: 4px;
+}
+
+.pricing-divider {
+  width: 91%;
+  height: 1px;
+  background: rgba(6, 4, 0, 0.12);
+  display: block;
+  margin: 0 auto;
+}
+
+.pricing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+  text-align: left;
+  padding: 0px 20px;
+  line-height: 1.4;
+}
+
+.pricing-list li {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  font-size: 16px;
+  color: rgba(6, 4, 0, 0.8);
+}
+
+.pricing-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background: rgba(6, 4, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pricing-icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.pricing-button {
+  margin: 24px auto 0px auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 24px;
+  border-radius: 8px;
+  background: #0a0908;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  width: 91%;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pricing-button:hover {
+  transform: translateY(-1px);
+  background-color: rgba(6, 4, 0, 0.9);
+}
+
+.pricing-card--featured {
+  margin-top: -24px;
+}
+
+@media (max-width: 1100px) {
+  .pricing-title {
+    font-size: 48px;
+    margin: 0px 0px 56px 0px;
+  }
+
+  .pricing-grid {
+    gap: 48px;
+  }
+
+  .pricing-card--featured {
+    margin-top: 9px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 750px) {
+  .pricing {
+    padding: 80px 0px 100px 0px;
+  }
+
+  .pricing-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .pricing-card-top h3 {
+    font-size: 22px;
+  }
+
+  .pricing-card-top p {
+    font-size: 15px;
+  }
+
+  .pricing-list li {
+    font-size: 15px;
+  }
+
+  .pricing-title {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+}
