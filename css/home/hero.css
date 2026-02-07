@@ -5,6 +5,10 @@
   padding: 0px 12px;
 }
 
+.hero .reveal {
+  opacity: 1;
+}
+
 .hero-shell {
   position: relative;
   width: 100%;
