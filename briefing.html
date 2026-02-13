@@ -668,9 +668,14 @@
                       <div class="card-body"><i data-lucide="clipboard-list"></i>Formulário</div>
                     </label>
                     <label class="selectable-card">
-                      <input type="checkbox" name="a_landing_sections" value="Outra">
+                      <input type="checkbox" name="a_landing_sections" value="Outra" id="a-landing-section-other">
                       <div class="card-body"><i data-lucide="plus"></i>Outra</div>
                     </label>
+                  </div>
+
+                  <div id="a-landing-other-wrap" class="conditional-wrap">
+                    <label>Se "Outra": qual seção?</label>
+                    <input type="text" name="a_landing_other_text" placeholder="Descreva a seção adicional">
                   </div>
                 </div>
               </div>
@@ -1320,6 +1325,7 @@
       const landingWrap = document.getElementById('a-landing-wrap');
       const ctaOtherWrap = document.getElementById('a-cta-other-wrap');
       const institutionalOtherWrap = document.getElementById('a-institutional-other-wrap');
+      const landingOtherWrap = document.getElementById('a-landing-other-wrap');
 
       institutionalWrap.classList.toggle('is-visible', structureType === 'Site institucional (múltiplas páginas)');
       landingWrap.classList.toggle('is-visible', structureType === 'Landing Page (1 página)');
@@ -1343,6 +1349,14 @@
       institutionalOtherWrap.classList.toggle('is-visible', showInstitutionalOther);
       if (!showInstitutionalOther) {
         form.elements.a_institutional_other_text.value = '';
+      }
+
+      const isLanding = structureType === 'Landing Page (1 página)';
+      const landingOtherChecked = !!form.querySelector('input[name="a_landing_sections"][value="Outra"]')?.checked;
+      const showLandingOther = isLanding && landingOtherChecked;
+      landingOtherWrap.classList.toggle('is-visible', showLandingOther);
+      if (!showLandingOther) {
+        form.elements.a_landing_other_text.value = '';
       }
 
       const storeStatus = getRadioValue('b_store_status');
@@ -1389,6 +1403,19 @@
       }, 2800);
     }
 
+    function validateSelection(name, label, minimum = 1) {
+      const checked = form.querySelectorAll(`input[name="${name}"]:checked`);
+      if (checked.length < minimum) {
+        showAlert(`Por favor, selecione ${label}.`);
+        const firstInput = form.querySelector(`input[name="${name}"]`);
+        if (firstInput) {
+          firstInput.focus();
+        }
+        return false;
+      }
+      return true;
+    }
+
     function validateCurrentStep() {
       const currentStepId = activeSteps[currentIndex];
       const activeStep = stepById(currentStepId);
@@ -1413,6 +1440,69 @@
         return false;
       }
 
+      if (currentStepId === 'a1') {
+        if (!validateSelection('a_goal', 'uma opção em "Qual é o objetivo principal?"')) return false;
+        if (!validateSelection('a_cta', 'uma opção em "CTA principal"')) return false;
+      }
+
+      if (currentStepId === 'a2') {
+        if (!validateSelection('a_structure_type', 'uma opção em "Você precisa de"')) return false;
+
+        const structureType = getRadioValue('a_structure_type');
+        if (structureType === 'Site institucional (múltiplas páginas)') {
+          if (!validateSelection('a_institutional_pages', 'ao menos uma opção em "Se institucional: quais páginas?"')) return false;
+        }
+        if (structureType === 'Landing Page (1 página)') {
+          if (!validateSelection('a_landing_sections', 'ao menos uma opção em "Se landing: quais seções?"')) return false;
+        }
+      }
+
+      if (currentStepId === 'a3') {
+        if (!validateSelection('a_logo_ready', 'uma opção em "Logo em alta?"')) return false;
+        if (!validateSelection('a_visual_identity', 'uma opção em "Identidade visual (cores/fontes)?"')) return false;
+        if (!validateSelection('a_texts_ready', 'uma opção em "Textos prontos?"')) return false;
+        if (!validateSelection('a_images_ready', 'uma opção em "Fotos/imagens prontas?"')) return false;
+      }
+
+      if (currentStepId === 'b1') {
+        if (!validateSelection('b_store_status', 'uma opção em "A loja é"')) return false;
+      }
+
+      if (currentStepId === 'b2') {
+        if (!validateSelection('b_product_count', 'uma opção em "Quantidade de produtos"')) return false;
+        if (!validateSelection('b_has_variations', 'uma opção em "Seus produtos têm variações?"')) return false;
+        if (!validateSelection('b_work_with', 'ao menos uma opção em "Vai trabalhar com"')) return false;
+      }
+
+      if (currentStepId === 'b3') {
+        if (!validateSelection('b_payment_methods', 'ao menos uma opção em "Formas de pagamento"')) return false;
+        if (!validateSelection('b_delivery_methods', 'ao menos uma opção em "Entrega"')) return false;
+      }
+
+      if (currentStepId === 'b4') {
+        if (!validateSelection('b_logo_ready', 'uma opção em "Logo em alta?"')) return false;
+        if (!validateSelection('b_visual_identity', 'uma opção em "Identidade visual (cores/fontes)?"')) return false;
+        if (!validateSelection('b_product_photos_ready', 'uma opção em "Fotos dos produtos prontas?"')) return false;
+        if (!validateSelection('b_product_descriptions_ready', 'uma opção em "Descrições dos produtos prontas?"')) return false;
+      }
+
+      if (currentStepId === 'c1') {
+        if (!validateSelection('c_system_for', 'uma opção em "O sistema é para"')) return false;
+        if (!validateSelection('c_user_count', 'uma opção em "Quantidade de usuários"')) return false;
+        if (!validateSelection('c_need_login', 'uma opção em "Precisa de login?"')) return false;
+      }
+
+      if (currentStepId === 'c2') {
+        if (!validateSelection('c_modules', 'ao menos uma opção em "Módulos"')) return false;
+      }
+
+      if (currentStepId === 'c4') {
+        if (!validateSelection('c_need_integrations', 'uma opção em "Precisa integrar com algo?"')) return false;
+        if (getRadioValue('c_need_integrations') === 'Sim') {
+          if (!validateSelection('c_integrations', 'ao menos uma opção em "Se sim, quais?"')) return false;
+        }
+      }
+
       return true;
     }
 
@@ -1427,7 +1517,9 @@
       fraction.innerText = `${currentIndex + 1} / ${activeSteps.length}`;
       fill.style.width = `${((currentIndex + 1) / activeSteps.length) * 100}%`;
       prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
-      nextBtn.innerText = currentIndex === activeSteps.length - 1 ? 'Finalizar e Enviar' : 'Continuar';
+      const isTypeStepWithoutSelection = currentStepId === 'tipo' && !getSelectedProjectType();
+      const isFinalStep = currentIndex === activeSteps.length - 1 && !isTypeStepWithoutSelection;
+      nextBtn.innerText = isFinalStep ? 'Finalizar e Enviar' : 'Continuar';
 
       wrapper.scrollTo({ top: 0, behavior: 'smooth' });
       updateConditionalBlocks();
@@ -1443,6 +1535,10 @@
         const institutionalPagesLabel = institutionalPages.includes('Outra')
           ? [...institutionalPages.filter((page) => page !== 'Outra'), `Outra (${getTextValue('a_institutional_other_text')})`]
           : institutionalPages;
+        const landingSections = getCheckedValues('a_landing_sections');
+        const landingSectionsLabel = landingSections.includes('Outra')
+          ? [...landingSections.filter((section) => section !== 'Outra'), `Outra (${getTextValue('a_landing_other_text')})`]
+          : landingSections;
         return [
           {
             name: 'ETAPA A1 - Objetivo e CTA',
@@ -1457,7 +1553,7 @@
             value: [
               `Estrutura escolhida: ${structureType}`,
               `Páginas institucionais: ${structureType === 'Site institucional (múltiplas páginas)' ? toList(institutionalPagesLabel) : 'Não aplicável'}`,
-              `Seções da landing: ${structureType === 'Landing Page (1 página)' ? toList(getCheckedValues('a_landing_sections')) : 'Não aplicável'}`
+              `Seções da landing: ${structureType === 'Landing Page (1 página)' ? toList(landingSectionsLabel) : 'Não aplicável'}`
             ].join('\n'),
             inline: false
           },
@@ -1676,6 +1772,10 @@
     });
 
     document.querySelectorAll('input[name="a_institutional_pages"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.querySelectorAll('input[name="a_landing_sections"]').forEach((input) => {
       input.addEventListener('change', updateConditionalBlocks);
     });
 
