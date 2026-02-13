@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merco Estúdio | Briefing</title>
+  <meta name="description" content="Briefing multi-etapas da Merco Estúdio para websites, e-commerce Shopify e sistemas sob medida.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Merco Estúdio">
+  <meta name="theme-color" content="#d32c17">
+  <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <style>
+    :root {
+      --merco-red: #d32c17;
+      --merco-red-soft: rgba(211, 44, 23, 0.05);
+      --dark-sidebar: #0A0A0B;
+      --bg-main: #FFFFFF;
+      --text-main: #121212;
+      --text-muted: #667085;
+      --border: #EAECF0;
+      --radius: 8px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: #d32c17;
+      color: #ffffff;
+    }
+
+    ::-moz-selection {
+      background: #d32c17;
+      color: #ffffff;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .split-layout {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .visual-sidebar {
+      flex: 1.06;
+      background-color: var(--dark-sidebar);
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(211, 44, 23, 0.12) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M0 38.59V40h1.41l29.59-29.59L29.59 9 0 38.59zM0 1.41L1.41 0H0v1.41zM40 1.41L38.59 0H40v1.41zM1.41 40L40 1.41V0h-1.41L0 38.59V40h1.41zM40 38.59V40h-1.41L9 10.41 10.41 9 40 38.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 80px;
+      color: white;
+    }
+
+    .logo-form {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .visual-sidebar h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      max-width: 540px;
+    }
+
+    .visual-sidebar h1 em {
+      color: var(--merco-red);
+      font-style: italic;
+      font-family: 'Instrument Serif', serif;
+    }
+
+    .form-section {
+      flex: 1.3;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      height: 100%;
+    }
+
+    .step-header {
+      padding: 32px 64px 20px 64px;
+      width: 100%;
+      background: white;
+      z-index: 5;
+      flex-shrink: 0;
+      max-width: 780px;
+      margin-top: 60px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .step-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      text-transform: uppercase;
+    }
+
+    .step-fraction {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .progress-line-container {
+      width: 100%;
+      height: 2px;
+      background: #F2F4F7;
+      position: relative;
+    }
+
+    .progress-line-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: var(--merco-red);
+      width: 0;
+      transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .form-content-wrapper {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px 64px;
+      scrollbar-width: thin;
+      max-width: 720px;
+    }
+
+    .form-content-wrapper::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .form-content-wrapper::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 10px;
+    }
+
+    .form-content {
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .question-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 42px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      font-weight: 500;
+    }
+
+    .question-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .step {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .field-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #344054;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #D0D5DD;
+      border-radius: var(--radius);
+      font-size: 16px;
+      background: white;
+      transition: var(--transition);
+      outline: none;
+      color: var(--text-main);
+      appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--merco-red);
+      box-shadow: 0 0 0 4px var(--merco-red-soft);
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .options-grid.single-column {
+      grid-template-columns: 1fr;
+    }
+
+    .options-grid--uniform .selectable-card {
+      align-self: stretch;
+    }
+
+    .options-grid--uniform .card-body {
+      height: 100%;
+    }
+
+    .selectable-card {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .selectable-card input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .card-body {
+      padding: 16px;
+      border: 1px solid #D0D5DD;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+      transition: var(--transition);
+      background: white;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 52px;
+      color: var(--text-main);
+    }
+
+    .card-body i,
+    .card-body svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .selectable-card input:checked+.card-body {
+      border-color: var(--merco-red);
+      background: #fffafa;
+      color: var(--merco-red);
+    }
+
+    .selectable-card input:checked+.card-body i,
+    .selectable-card input:checked+.card-body svg {
+      color: var(--merco-red);
+    }
+
+    .conditional-wrap {
+      display: none;
+      margin-top: 16px;
+    }
+
+    .conditional-wrap.is-visible {
+      display: block;
+    }
+
+    .form-footer {
+      padding: 24px 64px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      border-top: 1px solid #F2F4F7;
+      background: white;
+      flex-shrink: 0;
+      z-index: 10;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      margin-top: 26px;
+    }
+
+    .btn-next {
+      background: var(--merco-red);
+      color: white;
+      min-width: 160px;
+    }
+
+    .btn-next:hover {
+      background: #b02413;
+      transform: translateY(-1px);
+    }
+
+    .btn-prev {
+      background: white;
+      color: var(--text-muted);
+      border: 1px solid #D0D5DD;
+    }
+
+    .btn-prev:hover {
+      background: #F9FAFB;
+    }
+
+    .field-alert {
+      position: fixed;
+      left: 50%;
+      top: 20px;
+      transform: translate(-50%, -16px);
+      background: var(--merco-red);
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 200;
+      font-size: 14px;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .field-alert.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    #success-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: white;
+      z-index: 100;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 40px 40px 40px;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        overflow-y: auto;
+        height: auto;
+      }
+
+      .visual-sidebar h1 {
+        letter-spacing: 0;
+      }
+
+      .split-layout {
+        flex-direction: column;
+      }
+
+      .visual-sidebar {
+        padding: 40px 24px;
+        min-height: 230px;
+      }
+
+      .form-section {
+        height: auto;
+        min-height: 100%;
+        border-radius: 24px 24px 0 0;
+      }
+
+      .form-content-wrapper,
+      .step-header,
+      .form-footer {
+        padding: 0px 24px 32px 24px;
+      }
+
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .question-title {
+        font-size: 32px;
+      }
+
+      #success-overlay {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="split-layout">
+    <aside class="visual-sidebar">
+      <a href="index.html">
+        <img class="logo-form" src="assets/images/orcamento-logo.svg" alt="Logo da Merco Estúdio">
+      </a>
+      <h1>Briefing completo para entregar seu projeto com <em>clareza</em>.</h1>
+    </aside>
+
+    <main class="form-section">
+      <header class="step-header">
+        <div class="header-top">
+          <div id="step-label" class="step-label">Identificação</div>
+          <div id="step-fraction" class="step-fraction">1 / 2</div>
+        </div>
+        <div class="progress-line-container">
+          <div id="progress-fill" class="progress-line-fill"></div>
+        </div>
+      </header>
+
+      <div id="success-overlay">
+        <h2 class="question-title">Briefing enviado!</h2>
+        <p>Recebemos suas respostas e vamos avaliar o projeto com prioridade.</p>
+      </div>
+
+      <div class="form-content-wrapper">
+        <div class="form-content">
+          <form id="briefing-form">
+            <!-- STEPS_START -->
+            <div class="step active" data-step-id="identificacao" data-label="Identificação">
+              <h2 class="question-title">ETAPA 1 - Identificação</h2>
+              <p class="question-desc">Preencha os dados principais para iniciarmos o briefing.</p>
+
+              <div class="field-group">
+                <label>Nome completo </label>
+                <input type="text" name="name" placeholder="Ex: João Silva" required>
+              </div>
+
+              <div class="field-group">
+                <label>WhatsApp para contato </label>
+                <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+              </div>
+
+              <div class="field-group">
+                <label>Empresa ou projeto </label>
+                <input type="text" name="company" placeholder="Ex: Merco Estúdio" required>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="tipo" data-label="Tipo de Projeto">
+              <h2 class="question-title">ETAPA 2 - Tipo de projeto</h2>
+              <p class="question-desc">Selecione o tipo principal para seguir com o fluxo correto.</p>
+
+              <div class="field-group">
+                <label>Tipo de projeto</label>
+                <div class="options-grid single-column">
+                  <label class="selectable-card">
+                    <input type="radio" name="project_type" value="websites_landing">
+                    <div class="card-body"><i data-lucide="layout-template"></i>Websites / Landing pages</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="project_type" value="ecommerce_shopify">
+                    <div class="card-body"><i data-lucide="shopping-bag"></i>E-commerce (Shopify)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="project_type" value="portal_sistema">
+                    <div class="card-body"><i data-lucide="cpu"></i>Portal / Sistema sob medida</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="a1" data-label="Objetivo e CTA">
+              <h2 class="question-title">Objetivo e CTA</h2>
+              <p class="question-desc">Defina o objetivo principal e a ação que deseja priorizar.</p>
+
+              <div class="field-group">
+                <label>Qual é o objetivo principal?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="a_goal" value="Gerar leads">
+                    <div class="card-body"><i data-lucide="users"></i>Gerar leads</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_goal" value="Apresentar a empresa">
+                    <div class="card-body"><i data-lucide="building-2"></i>Apresentar a empresa</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_goal" value="Vender um serviço específico">
+                    <div class="card-body"><i data-lucide="badge-dollar-sign"></i>Vender um serviço específico</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_goal" value="Divulgar produto/lançamento">
+                    <div class="card-body"><i data-lucide="megaphone"></i>Divulgar produto/lançamento</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>CTA principal</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="a_cta" value="WhatsApp">
+                    <div class="card-body"><i data-lucide="message-circle"></i>WhatsApp</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_cta" value="Formulário">
+                    <div class="card-body"><i data-lucide="file-text"></i>Formulário</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_cta" value="Agendar chamada">
+                    <div class="card-body"><i data-lucide="calendar-clock"></i>Agendar chamada</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_cta" value="Outro">
+                    <div class="card-body"><i data-lucide="plus"></i>Outro</div>
+                  </label>
+                </div>
+
+                <div id="a-cta-other-wrap" class="conditional-wrap">
+                  <label>Se "Outro": qual CTA principal?</label>
+                  <input type="text" name="a_cta_other_text" placeholder="Descreva o CTA principal">
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="a2" data-label="Estrutura">
+              <h2 class="question-title">Estrutura</h2>
+              <p class="question-desc">Selecione o formato e depois marque os itens correspondentes.</p>
+
+              <div class="field-group">
+                <label>Você precisa de</label>
+                <div class="options-grid options-grid--uniform">
+                  <label class="selectable-card">
+                    <input type="radio" name="a_structure_type" value="Landing Page (1 página)">
+                    <div class="card-body"><i data-lucide="panel-top"></i>Landing Page (1 página)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_structure_type" value="Site institucional (múltiplas páginas)">
+                    <div class="card-body"><i data-lucide="layers-3"></i>Site institucional (múltiplas páginas)</div>
+                  </label>
+                </div>
+              </div>
+
+              <div id="a-institutional-wrap" class="conditional-wrap">
+                <div class="field-group">
+                  <label>Se institucional: quais páginas?</label>
+                  <div class="options-grid">
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_institutional_pages" value="Início">
+                      <div class="card-body"><i data-lucide="house"></i>Início</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_institutional_pages" value="Sobre">
+                      <div class="card-body"><i data-lucide="user-round"></i>Sobre</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_institutional_pages" value="Serviços">
+                      <div class="card-body"><i data-lucide="briefcase-business"></i>Serviços</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_institutional_pages" value="Portfólio">
+                      <div class="card-body"><i data-lucide="images"></i>Portfólio</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_institutional_pages" value="Blog">
+                      <div class="card-body"><i data-lucide="newspaper"></i>Blog</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_institutional_pages" value="Contato">
+                      <div class="card-body"><i data-lucide="phone-call"></i>Contato</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_institutional_pages" value="Outra" id="a-institutional-page-other">
+                      <div class="card-body"><i data-lucide="plus"></i>Outra</div>
+                    </label>
+                  </div>
+
+                  <div id="a-institutional-other-wrap" class="conditional-wrap">
+                    <label>Se "Outra": qual página?</label>
+                    <input type="text" name="a_institutional_other_text" placeholder="Descreva a página adicional">
+                  </div>
+                </div>
+              </div>
+
+              <div id="a-landing-wrap" class="conditional-wrap">
+                <div class="field-group">
+                  <label>Se landing: quais seções?</label>
+                  <div class="options-grid">
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_landing_sections" value="Oferta">
+                      <div class="card-body"><i data-lucide="badge-percent"></i>Oferta</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_landing_sections" value="Benefícios">
+                      <div class="card-body"><i data-lucide="sparkles"></i>Benefícios</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_landing_sections" value="Prova social">
+                      <div class="card-body"><i data-lucide="thumbs-up"></i>Prova social</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_landing_sections" value="FAQ">
+                      <div class="card-body"><i data-lucide="circle-help"></i>FAQ</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_landing_sections" value="Garantia">
+                      <div class="card-body"><i data-lucide="shield-check"></i>Garantia</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_landing_sections" value="Formulário">
+                      <div class="card-body"><i data-lucide="clipboard-list"></i>Formulário</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="a_landing_sections" value="Outra">
+                      <div class="card-body"><i data-lucide="plus"></i>Outra</div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="a3" data-label="Conteúdo">
+              <h2 class="question-title">Conteúdo</h2>
+              <p class="question-desc">Informe o material que já está disponível para produção.</p>
+
+              <div class="field-group">
+                <label>Logo em alta?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="a_logo_ready" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_logo_ready" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Identidade visual (cores/fontes)?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="a_visual_identity" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_visual_identity" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Textos prontos?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="a_texts_ready" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_texts_ready" value="Parcial">
+                    <div class="card-body"><i data-lucide="pause"></i>Parcial</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_texts_ready" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Fotos/imagens prontas?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="a_images_ready" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_images_ready" value="Parcial">
+                    <div class="card-body"><i data-lucide="pause"></i>Parcial</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_images_ready" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Anexar ou link (opcional)</label>
+                <input type="text" name="a_assets_link" placeholder="Cole aqui o link para pastas/arquivos">
+              </div>
+            </div>
+
+            <div class="step" data-step-id="a4" data-label="Preferências">
+              <h2 class="question-title">Preferências</h2>
+              <p class="question-desc">Liste referências e também o que você deseja evitar.</p>
+
+              <div class="field-group">
+                <label>Referências (1-3 links) (opcional)</label>
+                <textarea name="a_references" rows="3" placeholder="Ex: https://site1.com, https://site2.com"></textarea>
+              </div>
+
+              <div class="field-group">
+                <label>O que você não quer? (1-3 itens) (opcional)</label>
+                <textarea name="a_no_go" rows="3" placeholder="Ex: muitas animações, menu complexo, excesso de texto"></textarea>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="b1" data-label="Status da Loja">
+              <h2 class="question-title">Status da loja</h2>
+              <p class="question-desc">Defina o estágio atual para alinharmos o ponto de partida.</p>
+
+              <div class="field-group">
+                <label>A loja é</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_store_status" value="Nova (do zero)">
+                    <div class="card-body"><i data-lucide="rocket"></i>Nova (do zero)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_store_status" value="Já existe (melhorar)">
+                    <div class="card-body"><i data-lucide="wrench"></i>Já existe (melhorar)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_store_status" value="Migração para Shopify">
+                    <div class="card-body"><i data-lucide="repeat"></i>Migração para Shopify</div>
+                  </label>
+                </div>
+              </div>
+
+              <div id="b-store-link-wrap" class="conditional-wrap">
+                <div class="field-group">
+                  <label>Se "já existe" ou "migração": link da loja atual (opcional)</label>
+                  <input type="text" name="b_current_store_link" placeholder="https://loja-atual.com">
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Você já tem domínio? (Sim/Não) (opcional)</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_has_domain" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_has_domain" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="b2" data-label="Catálogo e Variações">
+              <h2 class="question-title">Catálogo e variações</h2>
+              <p class="question-desc">Mapeie volume e complexidade dos produtos.</p>
+
+              <div class="field-group">
+                <label>Quantidade de produtos</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_count" value="Até 20">
+                    <div class="card-body"><i data-lucide="package"></i>Até 20</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_count" value="21-100">
+                    <div class="card-body"><i data-lucide="boxes"></i>21-100</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_count" value="101-500">
+                    <div class="card-body"><i data-lucide="warehouse"></i>101-500</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_count" value="500+">
+                    <div class="card-body"><i data-lucide="layers"></i>500+</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Seus produtos têm variações (tamanho/cor/modelo)?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_has_variations" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_has_variations" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Vai trabalhar com</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_work_with" value="Produtos físicos">
+                    <div class="card-body"><i data-lucide="box"></i>Produtos físicos</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_work_with" value="Produtos digitais">
+                    <div class="card-body"><i data-lucide="download"></i>Produtos digitais</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_work_with" value="Serviços (agendável/recorrente)">
+                    <div class="card-body"><i data-lucide="calendar-range"></i>Serviços (agendável/recorrente)</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Você já tem planilha/lista de produtos? (Sim/Não) (opcional)</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_has_product_sheet" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_has_product_sheet" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div id="b-sheet-link-wrap" class="conditional-wrap">
+                <div class="field-group">
+                  <label>Se sim: anexar ou link (opcional)</label>
+                  <input type="text" name="b_product_sheet_link" placeholder="Cole o link da planilha/lista">
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="b3" data-label="Pagamento e Entrega">
+              <h2 class="question-title">Pagamento e entrega</h2>
+              <p class="question-desc">Informe meios de pagamento, logística e políticas.</p>
+
+              <div class="field-group">
+                <label>Formas de pagamento</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_payment_methods" value="Pix">
+                    <div class="card-body"><i data-lucide="scan-qr-code"></i>Pix</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_payment_methods" value="Cartão">
+                    <div class="card-body"><i data-lucide="credit-card"></i>Cartão</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_payment_methods" value="Boleto">
+                    <div class="card-body"><i data-lucide="receipt-text"></i>Boleto</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Entrega</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_delivery_methods" value="Correios">
+                    <div class="card-body"><i data-lucide="truck"></i>Correios</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_delivery_methods" value="Transportadora">
+                    <div class="card-body"><i data-lucide="truck"></i>Transportadora</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_delivery_methods" value="Retirada local">
+                    <div class="card-body"><i data-lucide="store"></i>Retirada local</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_delivery_methods" value="Entrega própria">
+                    <div class="card-body"><i data-lucide="bike"></i>Entrega própria</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Você já tem políticas definidas? (multi, opcional)</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_policies" value="Trocas e devoluções">
+                    <div class="card-body"><i data-lucide="refresh-ccw"></i>Trocas e devoluções</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_policies" value="Frete">
+                    <div class="card-body"><i data-lucide="package-open"></i>Frete</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_policies" value="Privacidade/LGPD">
+                    <div class="card-body"><i data-lucide="shield"></i>Privacidade/LGPD</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_policies" value="Termos">
+                    <div class="card-body"><i data-lucide="file-check-2"></i>Termos</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="b_policies" value="Não tenho ainda">
+                    <div class="card-body"><i data-lucide="circle-alert"></i>Não tenho ainda</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="b4" data-label="Visual e Conteúdo">
+              <h2 class="question-title">Visual e conteúdo</h2>
+              <p class="question-desc">Defina disponibilidade de materiais e referências visuais.</p>
+
+              <div class="field-group">
+                <label>Logo em alta?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_logo_ready" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_logo_ready" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Identidade visual (cores/fontes)?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_visual_identity" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_visual_identity" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Fotos dos produtos prontas?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_photos_ready" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_photos_ready" value="Parcial">
+                    <div class="card-body"><i data-lucide="pause"></i>Parcial</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_photos_ready" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Descrições dos produtos prontas?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_descriptions_ready" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_descriptions_ready" value="Parcial">
+                    <div class="card-body"><i data-lucide="pause"></i>Parcial</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="b_product_descriptions_ready" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Referências de lojas (1-3 links) (opcional)</label>
+                <textarea name="b_store_references" rows="3" placeholder="Ex: https://loja1.com, https://loja2.com"></textarea>
+              </div>
+
+              <div class="field-group">
+                <label>O que você não quer? (1-3 itens) (opcional)</label>
+                <textarea name="b_no_go" rows="3" placeholder="Ex: layout poluído, filtros confusos, checkout longo"></textarea>
+              </div>
+
+              <div class="field-group">
+                <label>Upload/link de materiais (opcional)</label>
+                <input type="text" name="b_assets_link" placeholder="Cole o link de pastas ou documentos">
+              </div>
+            </div>
+
+            <div class="step" data-step-id="c1" data-label="Uso e Usuários">
+              <h2 class="question-title">Uso e usuários</h2>
+              <p class="question-desc">Contexto de uso e escala de usuários do sistema.</p>
+
+              <div class="field-group">
+                <label>O sistema é para</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="c_system_for" value="Uso interno (equipe)">
+                    <div class="card-body"><i data-lucide="users"></i>Uso interno (equipe)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="c_system_for" value="Clientes (área do cliente)">
+                    <div class="card-body"><i data-lucide="user-round"></i>Clientes (área do cliente)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="c_system_for" value="Ambos">
+                    <div class="card-body"><i data-lucide="shuffle"></i>Ambos</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Quantidade de usuários</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="c_user_count" value="1-5">
+                    <div class="card-body"><i data-lucide="users"></i>1-5</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="c_user_count" value="6-20">
+                    <div class="card-body"><i data-lucide="users"></i>6-20</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="c_user_count" value="21-100">
+                    <div class="card-body"><i data-lucide="users"></i>21-100</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="c_user_count" value="100+">
+                    <div class="card-body"><i data-lucide="users"></i>100+</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Precisa de login?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="c_need_login" value="Sim">
+                    <div class="card-body"><i data-lucide="lock"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="c_need_login" value="Não">
+                    <div class="card-body"><i data-lucide="unlock"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="c2" data-label="Módulos">
+              <h2 class="question-title">Módulos</h2>
+              <p class="question-desc">Marque os módulos necessários para o sistema.</p>
+
+              <div class="field-group">
+                <label>Módulos (multi)</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Cadastro de clientes">
+                    <div class="card-body"><i data-lucide="contact"></i>Cadastro de clientes</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Produtos/serviços">
+                    <div class="card-body"><i data-lucide="package"></i>Produtos/serviços</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Agendamentos">
+                    <div class="card-body"><i data-lucide="calendar"></i>Agendamentos</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Pedidos/orçamentos">
+                    <div class="card-body"><i data-lucide="file-text"></i>Pedidos/orçamentos</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Financeiro (básico)">
+                    <div class="card-body"><i data-lucide="wallet"></i>Financeiro (básico)</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Relatórios">
+                    <div class="card-body"><i data-lucide="bar-chart-3"></i>Relatórios</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Upload de arquivos">
+                    <div class="card-body"><i data-lucide="upload"></i>Upload de arquivos</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Notificações">
+                    <div class="card-body"><i data-lucide="bell"></i>Notificações</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="checkbox" name="c_modules" value="Outro">
+                    <div class="card-body"><i data-lucide="plus"></i>Outro</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="c3" data-label="Regras do Negócio">
+              <h2 class="question-title">Regras do negócio</h2>
+              <p class="question-desc">Registre as regras e campos mais críticos da operação.</p>
+
+              <div class="field-group">
+                <label>Liste até 5 regras obrigatórias</label>
+                <textarea name="c_business_rules" rows="4" placeholder="Descreva as regras obrigatórias do processo"></textarea>
+              </div>
+
+              <div class="field-group">
+                <label>Quais são os 3 campos mais importantes que você precisa registrar?</label>
+                <textarea name="c_important_fields" rows="4" placeholder="Ex: status, responsável, data de vencimento"></textarea>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="c4" data-label="Integrações">
+              <h2 class="question-title">Integrações</h2>
+              <p class="question-desc">Defina necessidade de integração e os sistemas envolvidos.</p>
+
+              <div class="field-group">
+                <label>Precisa integrar com algo?</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="c_need_integrations" value="Sim">
+                    <div class="card-body"><i data-lucide="link"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="c_need_integrations" value="Não">
+                    <div class="card-body"><i data-lucide="unlink"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div id="c-integrations-wrap" class="conditional-wrap">
+                <div class="field-group">
+                  <label>Se sim, quais?</label>
+                  <div class="options-grid">
+                    <label class="selectable-card">
+                      <input type="checkbox" name="c_integrations" value="Pagamento">
+                      <div class="card-body"><i data-lucide="credit-card"></i>Pagamento</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="c_integrations" value="WhatsApp">
+                      <div class="card-body"><i data-lucide="message-circle"></i>WhatsApp</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="c_integrations" value="E-mail">
+                      <div class="card-body"><i data-lucide="mail"></i>E-mail</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="c_integrations" value="CRM">
+                      <div class="card-body"><i data-lucide="users-round"></i>CRM</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="c_integrations" value="ERP">
+                      <div class="card-body"><i data-lucide="network"></i>ERP</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="c_integrations" value="Planilha">
+                      <div class="card-body"><i data-lucide="sheet"></i>Planilha</div>
+                    </label>
+                    <label class="selectable-card">
+                      <input type="checkbox" name="c_integrations" value="Outro">
+                      <div class="card-body"><i data-lucide="plus"></i>Outro</div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step" data-step-id="c5" data-label="Referências e Materiais">
+              <h2 class="question-title">Referências e materiais</h2>
+              <p class="question-desc">Compartilhe referências e materiais de apoio.</p>
+
+              <div class="field-group">
+                <label>Existe algum sistema parecido (link) (opcional)</label>
+                <input type="text" name="c_similar_system_link" placeholder="https://exemplo.com">
+              </div>
+
+              <div class="field-group">
+                <label>O que você não quer? (1-3 itens) (opcional)</label>
+                <textarea name="c_no_go" rows="3" placeholder="Ex: interface complexa, processo manual longo"></textarea>
+              </div>
+
+              <div class="field-group">
+                <label>Anexar fluxos/prints/planilhas (opcional)</label>
+                <input type="text" name="c_assets_link" placeholder="Cole o link dos materiais">
+              </div>
+            </div>
+            <!-- STEPS_END -->
+          </form>
+        </div>
+      </div>
+
+      <footer class="form-footer">
+        <button type="button" id="prev-btn" class="btn btn-prev" style="display: none;">Voltar</button>
+        <button type="button" id="next-btn" class="btn btn-next">Continuar</button>
+      </footer>
+    </main>
+  </div>
+
+  <div id="field-alert" class="field-alert" role="alert" aria-live="assertive"></div>
+
+  <script>
+    const DISCORD_BRIEFING_WEBHOOK_URL = "https://discord.com/api/webhooks/1471931662022607097/oHgxAaNt2JxitF-5V81yMO7PJrvZyg2WRMsX31XhbElFD1gWmnY2LSY5iTjeHH8cqsTP";
+    const FLOW_STEPS = {
+      websites_landing: ['a1', 'a2', 'a3', 'a4'],
+      ecommerce_shopify: ['b1', 'b2', 'b3', 'b4'],
+      portal_sistema: ['c1', 'c2', 'c3', 'c4', 'c5']
+    };
+
+    const PROJECT_LABELS = {
+      websites_landing: 'Websites / Landing pages',
+      ecommerce_shopify: 'E-commerce (Shopify)',
+      portal_sistema: 'Portal / Sistema sob medida'
+    };
+
+    const BASE_STEPS = ['identificacao', 'tipo'];
+    let activeSteps = [...BASE_STEPS];
+    let currentIndex = 0;
+    let alertTimer = null;
+
+    const form = document.getElementById('briefing-form');
+    const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const fill = document.getElementById('progress-fill');
+    const labelText = document.getElementById('step-label');
+    const fraction = document.getElementById('step-fraction');
+    const success = document.getElementById('success-overlay');
+    const wrapper = document.querySelector('.form-content-wrapper');
+    const alertBox = document.getElementById('field-alert');
+    const allSteps = Array.from(document.querySelectorAll('.step'));
+
+    const renderIcons = () => {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    };
+
+    const getSelectedProjectType = () => form.querySelector('input[name="project_type"]:checked')?.value || '';
+    const stepById = (id) => allSteps.find((step) => step.dataset.stepId === id);
+
+    function toList(values) {
+      return values.length ? values.join(', ') : 'Não informado';
+    }
+
+    function getCheckedValues(name) {
+      return Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map((input) => input.value);
+    }
+
+    function getRadioValue(name) {
+      return form.querySelector(`input[name="${name}"]:checked`)?.value || 'Não informado';
+    }
+
+    function getTextValue(name) {
+      return (form.elements[name]?.value || '').toString().trim() || 'Não informado';
+    }
+
+    function resetGroup(name) {
+      form.querySelectorAll(`input[name="${name}"]`).forEach((input) => {
+        input.checked = false;
+      });
+    }
+
+    function updateConditionalBlocks() {
+      const structureType = getRadioValue('a_structure_type');
+      const institutionalWrap = document.getElementById('a-institutional-wrap');
+      const landingWrap = document.getElementById('a-landing-wrap');
+      const ctaOtherWrap = document.getElementById('a-cta-other-wrap');
+      const institutionalOtherWrap = document.getElementById('a-institutional-other-wrap');
+
+      institutionalWrap.classList.toggle('is-visible', structureType === 'Site institucional (múltiplas páginas)');
+      landingWrap.classList.toggle('is-visible', structureType === 'Landing Page (1 página)');
+
+      if (structureType !== 'Site institucional (múltiplas páginas)') {
+        resetGroup('a_institutional_pages');
+      }
+      if (structureType !== 'Landing Page (1 página)') {
+        resetGroup('a_landing_sections');
+      }
+
+      const showCtaOther = getRadioValue('a_cta') === 'Outro';
+      ctaOtherWrap.classList.toggle('is-visible', showCtaOther);
+      if (!showCtaOther) {
+        form.elements.a_cta_other_text.value = '';
+      }
+
+      const isInstitutional = structureType === 'Site institucional (múltiplas páginas)';
+      const institutionalOtherChecked = !!form.querySelector('input[name="a_institutional_pages"][value="Outra"]')?.checked;
+      const showInstitutionalOther = isInstitutional && institutionalOtherChecked;
+      institutionalOtherWrap.classList.toggle('is-visible', showInstitutionalOther);
+      if (!showInstitutionalOther) {
+        form.elements.a_institutional_other_text.value = '';
+      }
+
+      const storeStatus = getRadioValue('b_store_status');
+      const storeLinkWrap = document.getElementById('b-store-link-wrap');
+      const showStoreLink = storeStatus === 'Já existe (melhorar)' || storeStatus === 'Migração para Shopify';
+      storeLinkWrap.classList.toggle('is-visible', showStoreLink);
+      if (!showStoreLink) {
+        form.elements.b_current_store_link.value = '';
+      }
+
+      const hasSheet = getRadioValue('b_has_product_sheet');
+      const sheetWrap = document.getElementById('b-sheet-link-wrap');
+      const showSheet = hasSheet === 'Sim';
+      sheetWrap.classList.toggle('is-visible', showSheet);
+      if (!showSheet) {
+        form.elements.b_product_sheet_link.value = '';
+      }
+
+      const needIntegrations = getRadioValue('c_need_integrations');
+      const integrationsWrap = document.getElementById('c-integrations-wrap');
+      const showIntegrations = needIntegrations === 'Sim';
+      integrationsWrap.classList.toggle('is-visible', showIntegrations);
+      if (!showIntegrations) {
+        resetGroup('c_integrations');
+      }
+    }
+
+    function refreshStepFlow() {
+      const projectType = getSelectedProjectType();
+      const flowSteps = FLOW_STEPS[projectType] || [];
+      activeSteps = [...BASE_STEPS, ...flowSteps];
+      if (currentIndex > activeSteps.length - 1) {
+        currentIndex = activeSteps.length - 1;
+      }
+    }
+
+    function showAlert(message) {
+      if (!alertBox) return;
+      alertBox.textContent = message;
+      alertBox.classList.add('is-visible');
+      clearTimeout(alertTimer);
+      alertTimer = setTimeout(() => {
+        alertBox.classList.remove('is-visible');
+      }, 2800);
+    }
+
+    function validateCurrentStep() {
+      const currentStepId = activeSteps[currentIndex];
+      const activeStep = stepById(currentStepId);
+      if (!activeStep) return false;
+
+      if (currentStepId === 'identificacao') {
+        const required = activeStep.querySelectorAll('[required]');
+        for (const input of required) {
+          if (!input.value.trim()) {
+            input.style.borderColor = 'var(--merco-red)';
+            const label = input.closest('.field-group')?.querySelector('label')?.innerText || 'um campo obrigatório';
+            showAlert(`Por favor, preencha ${label.replace('*', '').trim()}.`);
+            input.focus();
+            return false;
+          }
+          input.style.borderColor = '#D0D5DD';
+        }
+      }
+
+      if (currentStepId === 'tipo' && !getSelectedProjectType()) {
+        showAlert('Por favor, selecione o tipo de projeto.');
+        return false;
+      }
+
+      return true;
+    }
+
+    function update() {
+      allSteps.forEach((step) => step.classList.remove('active'));
+      const currentStepId = activeSteps[currentIndex];
+      const activeStep = stepById(currentStepId);
+      if (!activeStep) return;
+
+      activeStep.classList.add('active');
+      labelText.innerText = activeStep.dataset.label;
+      fraction.innerText = `${currentIndex + 1} / ${activeSteps.length}`;
+      fill.style.width = `${((currentIndex + 1) / activeSteps.length) * 100}%`;
+      prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
+      nextBtn.innerText = currentIndex === activeSteps.length - 1 ? 'Finalizar e Enviar' : 'Continuar';
+
+      wrapper.scrollTo({ top: 0, behavior: 'smooth' });
+      updateConditionalBlocks();
+      renderIcons();
+    }
+
+    function buildFlowFields(projectType) {
+      if (projectType === 'websites_landing') {
+        const structureType = getRadioValue('a_structure_type');
+        const ctaValue = getRadioValue('a_cta');
+        const ctaLabel = ctaValue === 'Outro' ? `Outro (${getTextValue('a_cta_other_text')})` : ctaValue;
+        const institutionalPages = getCheckedValues('a_institutional_pages');
+        const institutionalPagesLabel = institutionalPages.includes('Outra')
+          ? [...institutionalPages.filter((page) => page !== 'Outra'), `Outra (${getTextValue('a_institutional_other_text')})`]
+          : institutionalPages;
+        return [
+          {
+            name: 'ETAPA A1 - Objetivo e CTA',
+            value: [
+              `Objetivo principal: ${getRadioValue('a_goal')}`,
+              `CTA principal: ${ctaLabel}`
+            ].join('\n'),
+            inline: false
+          },
+          {
+            name: 'ETAPA A2 - Estrutura',
+            value: [
+              `Estrutura escolhida: ${structureType}`,
+              `Páginas institucionais: ${structureType === 'Site institucional (múltiplas páginas)' ? toList(institutionalPagesLabel) : 'Não aplicável'}`,
+              `Seções da landing: ${structureType === 'Landing Page (1 página)' ? toList(getCheckedValues('a_landing_sections')) : 'Não aplicável'}`
+            ].join('\n'),
+            inline: false
+          },
+          {
+            name: 'ETAPA A3 - Conteúdo',
+            value: [
+              `Logo em alta: ${getRadioValue('a_logo_ready')}`,
+              `Identidade visual: ${getRadioValue('a_visual_identity')}`,
+              `Textos prontos: ${getRadioValue('a_texts_ready')}`,
+              `Fotos/imagens prontas: ${getRadioValue('a_images_ready')}`,
+              `Anexar ou link: ${getTextValue('a_assets_link')}`
+            ].join('\n'),
+            inline: false
+          },
+          {
+            name: 'ETAPA A4 - Preferências',
+            value: [
+              `Referências (1-3 links): ${getTextValue('a_references')}`,
+              `O que não quer (1-3 itens): ${getTextValue('a_no_go')}`
+            ].join('\n'),
+            inline: false
+          }
+        ];
+      }
+
+      if (projectType === 'ecommerce_shopify') {
+        const storeStatus = getRadioValue('b_store_status');
+        return [
+          {
+            name: 'ETAPA B1 - Status da loja',
+            value: [
+              `Status da loja: ${storeStatus}`,
+              `Link da loja atual: ${(storeStatus === 'Já existe (melhorar)' || storeStatus === 'Migração para Shopify') ? getTextValue('b_current_store_link') : 'Não aplicável'}`,
+              `Já tem domínio: ${getRadioValue('b_has_domain')}`
+            ].join('\n'),
+            inline: false
+          },
+          {
+            name: 'ETAPA B2 - Catálogo e variações',
+            value: [
+              `Quantidade de produtos: ${getRadioValue('b_product_count')}`,
+              `Produtos com variações: ${getRadioValue('b_has_variations')}`,
+              `Vai trabalhar com: ${toList(getCheckedValues('b_work_with'))}`,
+              `Tem planilha/lista: ${getRadioValue('b_has_product_sheet')}`,
+              `Planilha/link: ${getRadioValue('b_has_product_sheet') === 'Sim' ? getTextValue('b_product_sheet_link') : 'Não aplicável'}`
+            ].join('\n'),
+            inline: false
+          },
+          {
+            name: 'ETAPA B3 - Pagamento e entrega',
+            value: [
+              `Formas de pagamento: ${toList(getCheckedValues('b_payment_methods'))}`,
+              `Entrega: ${toList(getCheckedValues('b_delivery_methods'))}`,
+              `Políticas definidas: ${toList(getCheckedValues('b_policies'))}`
+            ].join('\n'),
+            inline: false
+          },
+          {
+            name: 'ETAPA B4 - Visual e conteúdo',
+            value: [
+              `Logo em alta: ${getRadioValue('b_logo_ready')}`,
+              `Identidade visual: ${getRadioValue('b_visual_identity')}`,
+              `Fotos dos produtos prontas: ${getRadioValue('b_product_photos_ready')}`,
+              `Descrições dos produtos prontas: ${getRadioValue('b_product_descriptions_ready')}`,
+              `Referências de lojas: ${getTextValue('b_store_references')}`,
+              `O que não quer: ${getTextValue('b_no_go')}`,
+              `Upload/link de materiais: ${getTextValue('b_assets_link')}`
+            ].join('\n'),
+            inline: false
+          }
+        ];
+      }
+
+      return [
+        {
+          name: 'ETAPA C1 - Uso e usuários',
+          value: [
+            `Sistema para: ${getRadioValue('c_system_for')}`,
+            `Quantidade de usuários: ${getRadioValue('c_user_count')}`,
+            `Precisa de login: ${getRadioValue('c_need_login')}`
+          ].join('\n'),
+          inline: false
+        },
+        {
+          name: 'ETAPA C2 - Módulos',
+          value: `Módulos selecionados: ${toList(getCheckedValues('c_modules'))}`,
+          inline: false
+        },
+        {
+          name: 'ETAPA C3 - Regras do negócio',
+          value: [
+            `Regras obrigatórias: ${getTextValue('c_business_rules')}`,
+            `3 campos mais importantes: ${getTextValue('c_important_fields')}`
+          ].join('\n'),
+          inline: false
+        },
+        {
+          name: 'ETAPA C4 - Integrações',
+          value: [
+            `Precisa integrar: ${getRadioValue('c_need_integrations')}`,
+            `Integrações: ${getRadioValue('c_need_integrations') === 'Sim' ? toList(getCheckedValues('c_integrations')) : 'Não aplicável'}`
+          ].join('\n'),
+          inline: false
+        },
+        {
+          name: 'ETAPA C5 - Referências e materiais',
+          value: [
+            `Sistema parecido (link): ${getTextValue('c_similar_system_link')}`,
+            `O que não quer: ${getTextValue('c_no_go')}`,
+            `Anexar fluxos/prints/planilhas: ${getTextValue('c_assets_link')}`
+          ].join('\n'),
+          inline: false
+        }
+      ];
+    }
+
+    async function sendBriefing() {
+      const projectType = getSelectedProjectType();
+      const projectLabel = PROJECT_LABELS[projectType] || 'Não informado';
+      const fields = [
+        {
+          name: 'Identificação',
+          value: [
+            `Nome: ${getTextValue('name')}`,
+            `WhatsApp: ${getTextValue('phone')}`,
+            `Empresa ou projeto: ${getTextValue('company')}`
+          ].join('\n'),
+          inline: false
+        },
+        {
+          name: 'Tipo de projeto',
+          value: projectLabel,
+          inline: false
+        },
+        ...buildFlowFields(projectType)
+      ];
+
+      const payload = {
+        username: 'Merco Briefing',
+        embeds: [
+          {
+            title: `Novo briefing - ${projectLabel}`,
+            color: 0xD32C17,
+            fields,
+            timestamp: new Date().toISOString()
+          }
+        ]
+      };
+
+      nextBtn.disabled = true;
+      prevBtn.disabled = true;
+
+      try {
+        const res = await fetch(DISCORD_BRIEFING_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error('Falha no envio para o Discord.');
+        }
+
+        success.innerHTML = `
+          <h2 class="question-title">Briefing enviado!</h2>
+          <p>Recebemos suas respostas e vamos montar o próximo passo do projeto.</p>
+        `;
+        success.style.display = 'flex';
+
+        form.reset();
+        currentIndex = 0;
+        refreshStepFlow();
+        updateConditionalBlocks();
+      } catch (error) {
+        showAlert('Nao foi possivel enviar para o Discord. Verifique o webhook do briefing.');
+        nextBtn.disabled = false;
+        prevBtn.disabled = false;
+      }
+    }
+
+    nextBtn.addEventListener('click', async () => {
+      if (!validateCurrentStep()) return;
+
+      if (activeSteps[currentIndex] === 'tipo') {
+        refreshStepFlow();
+      }
+
+      if (currentIndex < activeSteps.length - 1) {
+        currentIndex += 1;
+        update();
+      } else {
+        await sendBriefing();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex === 0) return;
+      currentIndex -= 1;
+      update();
+    });
+
+    document.querySelectorAll('input[name="project_type"]').forEach((input) => {
+      input.addEventListener('change', () => {
+        refreshStepFlow();
+        updateConditionalBlocks();
+        update();
+      });
+    });
+
+    document.querySelectorAll('input[name="a_structure_type"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.querySelectorAll('input[name="a_cta"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.querySelectorAll('input[name="a_institutional_pages"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.querySelectorAll('input[name="b_store_status"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.querySelectorAll('input[name="b_has_product_sheet"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.querySelectorAll('input[name="c_need_integrations"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.getElementById('phone').addEventListener('input', (event) => {
+      const numbers = event.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+      event.target.value = !numbers[2] ? numbers[1] : `(${numbers[1]}) ${numbers[2]}${numbers[3] ? `-${numbers[3]}` : ''}`;
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      refreshStepFlow();
+      updateConditionalBlocks();
+      update();
+      renderIcons();
+    });
+  </script>
+</body>
+
+</html>
