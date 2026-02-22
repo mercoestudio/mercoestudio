@@ -686,7 +686,7 @@
               <p class="question-desc">Informe o material que já está disponível para produção.</p>
 
               <div class="field-group">
-                <label>Logo em alta?</label>
+                <label>Possui logotipo?</label>
                 <div class="options-grid">
                   <label class="selectable-card">
                     <input type="radio" name="a_logo_ready" value="Sim">
@@ -750,6 +750,20 @@
               </div>
 
               <div class="field-group">
+                <label>Possui domínio? (Sim/Não) (opcional)</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="a_has_domain" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="a_has_domain" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-group">
                 <label>Anexar ou link (opcional)</label>
                 <input type="text" name="a_assets_link" placeholder="Cole aqui o link para pastas/arquivos">
               </div>
@@ -767,6 +781,11 @@
               <div class="field-group">
                 <label>O que você não quer? (1-3 itens) (opcional)</label>
                 <textarea name="a_no_go" rows="3" placeholder="Ex: muitas animações, menu complexo, excesso de texto"></textarea>
+              </div>
+
+              <div class="field-group">
+                <label>Observações adicionais (opcional)</label>
+                <textarea name="a_additional_notes" rows="3" placeholder="Escreva detalhes extras sobre o projeto"></textarea>
               </div>
             </div>
 
@@ -800,7 +819,7 @@
               </div>
 
               <div class="field-group">
-                <label>Você já tem domínio? (Sim/Não) (opcional)</label>
+                <label>Possui domínio? (Sim/Não) (opcional)</label>
                 <div class="options-grid">
                   <label class="selectable-card">
                     <input type="radio" name="b_has_domain" value="Sim">
@@ -970,7 +989,7 @@
               <p class="question-desc">Defina disponibilidade de materiais e referências visuais.</p>
 
               <div class="field-group">
-                <label>Logo em alta?</label>
+                <label>Possui logotipo?</label>
                 <div class="options-grid">
                   <label class="selectable-card">
                     <input type="radio" name="b_logo_ready" value="Sim">
@@ -1047,6 +1066,11 @@
                 <label>Upload/link de materiais (opcional)</label>
                 <input type="text" name="b_assets_link" placeholder="Cole o link de pastas ou documentos">
               </div>
+
+              <div class="field-group">
+                <label>Observações adicionais (opcional)</label>
+                <textarea name="b_additional_notes" rows="3" placeholder="Escreva detalhes extras sobre o projeto"></textarea>
+              </div>
             </div>
 
             <div class="step" data-step-id="c1" data-label="Uso e Usuários">
@@ -1106,6 +1130,20 @@
                   </label>
                 </div>
               </div>
+
+              <div class="field-group">
+                <label>Possui domínio? (Sim/Não) (opcional)</label>
+                <div class="options-grid">
+                  <label class="selectable-card">
+                    <input type="radio" name="c_has_domain" value="Sim">
+                    <div class="card-body"><i data-lucide="check"></i>Sim</div>
+                  </label>
+                  <label class="selectable-card">
+                    <input type="radio" name="c_has_domain" value="Não">
+                    <div class="card-body"><i data-lucide="x"></i>Não</div>
+                  </label>
+                </div>
+              </div>
             </div>
 
             <div class="step" data-step-id="c2" data-label="Módulos">
@@ -1148,9 +1186,19 @@
                     <div class="card-body"><i data-lucide="bell"></i>Notificações</div>
                   </label>
                   <label class="selectable-card">
-                    <input type="checkbox" name="c_modules" value="Outro">
+                    <input type="checkbox" name="c_modules" value="Outro" id="c-modules-other">
                     <div class="card-body"><i data-lucide="plus"></i>Outro</div>
                   </label>
+                </div>
+
+                <div id="c-modules-other-wrap" class="conditional-wrap">
+                  <label>Se "Outro": qual módulo?</label>
+                  <input type="text" name="c_modules_other_text" placeholder="Descreva o módulo adicional">
+                </div>
+
+                <div id="c-upload-details-wrap" class="conditional-wrap">
+                  <label>Se "Upload de arquivos": detalhe como o anexo deve funcionar</label>
+                  <input type="text" name="c_upload_details_text" placeholder="Ex: formatos, limite de tamanho, onde salvar">
                 </div>
               </div>
             </div>
@@ -1217,9 +1265,14 @@
                       <div class="card-body"><i data-lucide="sheet"></i>Planilha</div>
                     </label>
                     <label class="selectable-card">
-                      <input type="checkbox" name="c_integrations" value="Outro">
+                      <input type="checkbox" name="c_integrations" value="Outro" id="c-integrations-other">
                       <div class="card-body"><i data-lucide="plus"></i>Outro</div>
                     </label>
+                  </div>
+
+                  <div id="c-integrations-other-wrap" class="conditional-wrap">
+                    <label>Se "Outro": qual integração?</label>
+                    <input type="text" name="c_integrations_other_text" placeholder="Descreva a integração adicional">
                   </div>
                 </div>
               </div>
@@ -1242,6 +1295,11 @@
               <div class="field-group">
                 <label>Anexar fluxos/prints/planilhas (opcional)</label>
                 <input type="text" name="c_assets_link" placeholder="Cole o link dos materiais">
+              </div>
+
+              <div class="field-group">
+                <label>Observações adicionais (opcional)</label>
+                <textarea name="c_additional_notes" rows="3" placeholder="Escreva detalhes extras sobre o projeto"></textarea>
               </div>
             </div>
             <!-- STEPS_END -->
@@ -1326,6 +1384,9 @@
       const ctaOtherWrap = document.getElementById('a-cta-other-wrap');
       const institutionalOtherWrap = document.getElementById('a-institutional-other-wrap');
       const landingOtherWrap = document.getElementById('a-landing-other-wrap');
+      const cModulesOtherWrap = document.getElementById('c-modules-other-wrap');
+      const cUploadDetailsWrap = document.getElementById('c-upload-details-wrap');
+      const cIntegrationsOtherWrap = document.getElementById('c-integrations-other-wrap');
 
       institutionalWrap.classList.toggle('is-visible', structureType === 'Site institucional (múltiplas páginas)');
       landingWrap.classList.toggle('is-visible', structureType === 'Landing Page (1 página)');
@@ -1381,6 +1442,25 @@
       integrationsWrap.classList.toggle('is-visible', showIntegrations);
       if (!showIntegrations) {
         resetGroup('c_integrations');
+      }
+
+      const modulesOtherChecked = !!form.querySelector('input[name="c_modules"][value="Outro"]')?.checked;
+      cModulesOtherWrap.classList.toggle('is-visible', modulesOtherChecked);
+      if (!modulesOtherChecked) {
+        form.elements.c_modules_other_text.value = '';
+      }
+
+      const uploadModuleChecked = !!form.querySelector('input[name="c_modules"][value="Upload de arquivos"]')?.checked;
+      cUploadDetailsWrap.classList.toggle('is-visible', uploadModuleChecked);
+      if (!uploadModuleChecked) {
+        form.elements.c_upload_details_text.value = '';
+      }
+
+      const integrationsOtherChecked = !!form.querySelector('input[name="c_integrations"][value="Outro"]')?.checked;
+      const showIntegrationsOther = showIntegrations && integrationsOtherChecked;
+      cIntegrationsOtherWrap.classList.toggle('is-visible', showIntegrationsOther);
+      if (!showIntegrationsOther) {
+        form.elements.c_integrations_other_text.value = '';
       }
     }
 
@@ -1458,7 +1538,7 @@
       }
 
       if (currentStepId === 'a3') {
-        if (!validateSelection('a_logo_ready', 'uma opção em "Logo em alta?"')) return false;
+        if (!validateSelection('a_logo_ready', 'uma opção em "Possui logotipo?"')) return false;
         if (!validateSelection('a_visual_identity', 'uma opção em "Identidade visual (cores/fontes)?"')) return false;
         if (!validateSelection('a_texts_ready', 'uma opção em "Textos prontos?"')) return false;
         if (!validateSelection('a_images_ready', 'uma opção em "Fotos/imagens prontas?"')) return false;
@@ -1480,7 +1560,7 @@
       }
 
       if (currentStepId === 'b4') {
-        if (!validateSelection('b_logo_ready', 'uma opção em "Logo em alta?"')) return false;
+        if (!validateSelection('b_logo_ready', 'uma opção em "Possui logotipo?"')) return false;
         if (!validateSelection('b_visual_identity', 'uma opção em "Identidade visual (cores/fontes)?"')) return false;
         if (!validateSelection('b_product_photos_ready', 'uma opção em "Fotos dos produtos prontas?"')) return false;
         if (!validateSelection('b_product_descriptions_ready', 'uma opção em "Descrições dos produtos prontas?"')) return false;
@@ -1560,7 +1640,8 @@
           {
             name: 'ETAPA A3 - Conteúdo',
             value: [
-              `Logo em alta: ${getRadioValue('a_logo_ready')}`,
+              `Possui logotipo: ${getRadioValue('a_logo_ready')}`,
+              `Possui domínio: ${getRadioValue('a_has_domain')}`,
               `Identidade visual: ${getRadioValue('a_visual_identity')}`,
               `Textos prontos: ${getRadioValue('a_texts_ready')}`,
               `Fotos/imagens prontas: ${getRadioValue('a_images_ready')}`,
@@ -1572,7 +1653,8 @@
             name: 'ETAPA A4 - Preferências',
             value: [
               `Referências (1-3 links): ${getTextValue('a_references')}`,
-              `O que não quer (1-3 itens): ${getTextValue('a_no_go')}`
+              `O que não quer (1-3 itens): ${getTextValue('a_no_go')}`,
+              `Observações adicionais: ${getTextValue('a_additional_notes')}`
             ].join('\n'),
             inline: false
           }
@@ -1587,7 +1669,7 @@
             value: [
               `Status da loja: ${storeStatus}`,
               `Link da loja atual: ${(storeStatus === 'Já existe (melhorar)' || storeStatus === 'Migração para Shopify') ? getTextValue('b_current_store_link') : 'Não aplicável'}`,
-              `Já tem domínio: ${getRadioValue('b_has_domain')}`
+              `Possui domínio: ${getRadioValue('b_has_domain')}`
             ].join('\n'),
             inline: false
           },
@@ -1614,13 +1696,14 @@
           {
             name: 'ETAPA B4 - Visual e conteúdo',
             value: [
-              `Logo em alta: ${getRadioValue('b_logo_ready')}`,
+              `Possui logotipo: ${getRadioValue('b_logo_ready')}`,
               `Identidade visual: ${getRadioValue('b_visual_identity')}`,
               `Fotos dos produtos prontas: ${getRadioValue('b_product_photos_ready')}`,
               `Descrições dos produtos prontas: ${getRadioValue('b_product_descriptions_ready')}`,
               `Referências de lojas: ${getTextValue('b_store_references')}`,
               `O que não quer: ${getTextValue('b_no_go')}`,
-              `Upload/link de materiais: ${getTextValue('b_assets_link')}`
+              `Upload/link de materiais: ${getTextValue('b_assets_link')}`,
+              `Observações adicionais: ${getTextValue('b_additional_notes')}`
             ].join('\n'),
             inline: false
           }
@@ -1633,13 +1716,21 @@
           value: [
             `Sistema para: ${getRadioValue('c_system_for')}`,
             `Quantidade de usuários: ${getRadioValue('c_user_count')}`,
-            `Precisa de login: ${getRadioValue('c_need_login')}`
+            `Precisa de login: ${getRadioValue('c_need_login')}`,
+            `Possui domínio: ${getRadioValue('c_has_domain')}`
           ].join('\n'),
           inline: false
         },
         {
           name: 'ETAPA C2 - Módulos',
-          value: `Módulos selecionados: ${toList(getCheckedValues('c_modules'))}`,
+          value: [
+            `Módulos selecionados: ${toList((() => {
+              const modules = getCheckedValues('c_modules');
+              if (!modules.includes('Outro')) return modules;
+              return [...modules.filter((module) => module !== 'Outro'), `Outro (${getTextValue('c_modules_other_text')})`];
+            })())}`,
+            `Detalhes do anexo: ${getCheckedValues('c_modules').includes('Upload de arquivos') ? getTextValue('c_upload_details_text') : 'Não aplicável'}`
+          ].join('\n'),
           inline: false
         },
         {
@@ -1654,7 +1745,11 @@
           name: 'ETAPA C4 - Integrações',
           value: [
             `Precisa integrar: ${getRadioValue('c_need_integrations')}`,
-            `Integrações: ${getRadioValue('c_need_integrations') === 'Sim' ? toList(getCheckedValues('c_integrations')) : 'Não aplicável'}`
+            `Integrações: ${getRadioValue('c_need_integrations') === 'Sim' ? toList((() => {
+              const integrations = getCheckedValues('c_integrations');
+              if (!integrations.includes('Outro')) return integrations;
+              return [...integrations.filter((integration) => integration !== 'Outro'), `Outro (${getTextValue('c_integrations_other_text')})`];
+            })()) : 'Não aplicável'}`
           ].join('\n'),
           inline: false
         },
@@ -1663,7 +1758,8 @@
           value: [
             `Sistema parecido (link): ${getTextValue('c_similar_system_link')}`,
             `O que não quer: ${getTextValue('c_no_go')}`,
-            `Anexar fluxos/prints/planilhas: ${getTextValue('c_assets_link')}`
+            `Anexar fluxos/prints/planilhas: ${getTextValue('c_assets_link')}`,
+            `Observações adicionais: ${getTextValue('c_additional_notes')}`
           ].join('\n'),
           inline: false
         }
@@ -1788,6 +1884,14 @@
     });
 
     document.querySelectorAll('input[name="c_need_integrations"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.querySelectorAll('input[name="c_modules"]').forEach((input) => {
+      input.addEventListener('change', updateConditionalBlocks);
+    });
+
+    document.querySelectorAll('input[name="c_integrations"]').forEach((input) => {
       input.addEventListener('change', updateConditionalBlocks);
     });
 
